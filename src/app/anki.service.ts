@@ -29,9 +29,13 @@ export class AnkiService {
   }
 
   selected: any
+  round: any = []
 
   select() {
-    this.selected = this.learning.find((e: any) => e.repetitions == 0 || e.interval == 0)
+    if (this.round.length == 0) {
+      this.round = this.learning.filter((e: any) => e.repetitions == 0 || e.interval == 0)
+    }
+    this.selected = this.round.shift()
     return this.selected
   }
 
