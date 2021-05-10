@@ -4,6 +4,7 @@
     min-width: 800px;
     box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;;
     display: flex;
+    position: relative;
 }
 
 .center {
@@ -20,6 +21,12 @@ button {
 
 * {
     user-select: none;
+}
+
+/* The ::selection pseudo-element currently isn't in any CSS module on the standard track. It should not be used in production environments. */
+/* https://stackoverflow.com/a/20657923 */
+.main * {
+    user-select: text;
 }
 
 .btns {
@@ -67,4 +74,9 @@ p.hang {
 
 button, a {
     font-size: 1.2em;
+}
+
+.emoji {
+    margin-left: 0.2em;
+    font-size: 1.0em;
 }

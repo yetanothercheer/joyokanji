@@ -2,20 +2,37 @@
     <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
 </div>
 
-<div *ngIf="loaded && current == null" class="card">
+<div *ngIf="loaded && !started" class="card">
     <div class="center">
-        <p style="font-size: 2em;"><b>これで終わりました！</b></p>
-        <button (click)="more()" mat-flat-button style="color: #2a9d8f"><b><u>もう二十個ください。</u></b></button>
+        <p style="font-size: 3em; color: #f4a261"><b>おはよー💨</b></p>
+        <button (click)="start()" mat-flat-button style="font-size: 2em; color: #2a9d8f">
+            💪<b><u>今日も<span style="color: #f4a261">常用漢字</span>頑張りましょう</u></b>👊
+        </button>
     </div>
 </div>
 
-<div *ngIf="loaded && current != null" class="card">
+<div *ngIf="loaded && started && current == null" class="card">
+    <div *ngIf="hasMore" class="center">
+        <p style="font-size: 2em;"><b>これで終わりました！🥳</b></p>
+        <button (click)="more()" mat-flat-button style="color: #2a9d8f"><b><u>もう二十個ください。</u></b></button>
+    </div>
+    <div *ngIf="!hasMore" class="center">
+        <p style="font-size: 2em;"><b>🍻おめでとう！卒業しました！🥳</b></p>
+    </div>
+</div>
+
+<div *ngIf="loaded && started && current != null" class="card">
     <p class="hang" style="color: white">
         <b>
             {{ front ? "おもて" : "うら" }}
         </b>
     </p>
     <div [attr.change]="!front" class="hang arrow-right"></div>
+    <a *ngIf="!front" disableRipple mat-flat-button class="hang" matTooltip="知らない漢字が再び表示されます。他のオプシンの場合は数日後に表示されます。"
+        style="right: 0; margin: 0.5em; color:#2a9d8f">
+        <mat-icon>help</mat-icon>
+    </a>
+
 
     <div *ngIf="front" class="content">
         <div class="main">
@@ -33,11 +50,14 @@
             <p style="font-size: 4em">{{current.kanji}}</p>
         </div>
         <div class="btns">
-            <button (click)="response(0)" mat-stroked-button style="color: #f4a261;"
-                color="primary"><b>知らない</b></button>
-            <button (click)="response(3)" mat-stroked-button style="color: #e76f51"><b>難しい</b></button>
-            <button (click)="response(4)" mat-stroked-button style="color: #264653"><b>知ってる</b></button>
-            <button (click)="response(5)" mat-stroked-button style="color: #2a9d8f"><b>簡単</b></button>
+            <button (click)="response(0)" mat-stroked-button style="color: #f4a261"><b>知らない<span
+                        class="emoji">🤕</span></b></button>
+            <button (click)="response(3)" mat-stroked-button style="color: #e76f51"><b>難しい<span
+                        class="emoji">🙃</span></b></button>
+            <button (click)="response(4)" mat-stroked-button style="color: #264653"><b>知ってる<span
+                        class="emoji">🤥</span></b></button>
+            <button (click)="response(5)" mat-stroked-button style="color: #2a9d8f"><b>簡単<span
+                        class="emoji">🥳</span></b></button>
         </div>
     </div>
 </div>

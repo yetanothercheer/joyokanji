@@ -13,7 +13,8 @@ import { AnkiService } from './anki.service';
 import { SettingComponent } from './setting/setting.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatProgressBarModule,
     MatTabsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule,
+    MatIconModule
   ],
   providers: [AnkiService],
   bootstrap: [AppComponent]

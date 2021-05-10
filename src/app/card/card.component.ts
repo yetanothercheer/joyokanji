@@ -20,25 +20,31 @@ export class CardComponent implements OnInit {
 
   loaded = false
 
-  onLoad() {
+  async onLoad() {
     if (!this.anki.hasData()) {
-      this.http.get('/assets/joyokanji.apkg', { responseType: 'arraybuffer' }).subscribe(async d => {
-        await this.anki.readFile(d)
-        this.current = this.anki.select()
-        if (this.current == null) {
-          this.anki.add(20)
-        }
-        this.current = this.anki.select()
-        if (this.current == null) {
-          // run out
-        }
-        this.loaded = true
-      })
+      let data = await this.http.get('/assets/joyokanji.apkg', { responseType: 'arraybuffer' }).toPromise()
+      await this.anki.readFile(data)
+    }
+    this.loaded = true
+    this.hasMore = this.anki.hasMore()
+    if (this.anki.initialzedBefore()) {
+      this.start()
     }
   }
 
+  started = false
+
+  start() {
+    this.started = true
+    this.anki.init()
+    this.current = this.anki.select()
+  }
+
+  hasMore = false
+
   next() {
     this.current = this.anki.select()
+    this.hasMore = this.anki.hasMore()
   }
 
   front = true
@@ -52,6 +58,7 @@ export class CardComponent implements OnInit {
     this.next()
     this.front = true
   }
+
 
   more() {
     this.anki.add(20)
