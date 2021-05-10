@@ -21,7 +21,7 @@
         <div class="main">
             <p style="font-size: 4em; color: gray">{{current.onyomi}}</p>
             <mat-divider></mat-divider>
-            <p style="font-size: 2em">{{current.imi}}</p>
+            <p style="font-size: 2em; line-height: 1.5em;" innerHTML={{current.imi}}></p>
         </div>
         <div class="btns">
             <button (click)="reveal()" mat-flat-button><b><u>あらわす</u></b></button>
