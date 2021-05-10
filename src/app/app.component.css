@@ -1,3 +1,6 @@
-mat-tab-group {
-    margin:1em;
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }

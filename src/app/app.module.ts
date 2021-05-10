@@ -12,6 +12,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AnkiService } from './anki.service';
 import { SettingComponent } from './setting/setting.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     BrowserAnimationsModule,
     MatButtonModule,
     MatProgressBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDividerModule
   ],
   providers: [AnkiService],
   bootstrap: [AppComponent]

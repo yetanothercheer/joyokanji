@@ -1,43 +1,43 @@
 <div *ngIf="!loaded" class="card">
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
 </div>
 
 <div *ngIf="loaded && current == null" class="card">
     <div class="center">
-        <h2>完了</h2>
-        <button (click)="more()" mat-raised-button color="primary">20 MORE</button>
+        <p style="font-size: 2em;"><b>これで終わりました！</b></p>
+        <button (click)="more()" mat-flat-button style="color: #2a9d8f"><b><u>もう二十個ください。</u></b></button>
     </div>
 </div>
 
 <div *ngIf="loaded && current != null" class="card">
     <p class="hang" style="color: white">
         <b>
-            {{ front ? "FRONT" : "BACK" }}
+            {{ front ? "おもて" : "うら" }}
         </b>
     </p>
     <div [attr.change]="!front" class="hang arrow-right"></div>
 
     <div *ngIf="front" class="content">
         <div class="main">
-            <h1>{{current.onyomi}}</h1>
-            <p>{{current.imi}}</p>
+            <p style="font-size: 4em; color: gray">{{current.onyomi}}</p>
+            <mat-divider></mat-divider>
+            <p style="font-size: 2em">{{current.imi}}</p>
         </div>
         <div class="btns">
-            <button (click)="reveal()" mat-stroked-button color="primary">あらわす</button>
+            <button (click)="reveal()" mat-flat-button><b><u>あらわす</u></b></button>
         </div>
     </div>
 
     <div *ngIf="!front" class="content">
         <div class="main">
-            <h1>{{current.kanji}}</h1>
+            <p style="font-size: 4em">{{current.kanji}}</p>
         </div>
         <div class="btns">
-            <button (click)="response(0)" mat-flat-button color="warn">(0)</button>
-            <button (click)="response(1)" mat-flat-button color="warn">(1)</button>
-            <button (click)="response(2)" mat-flat-button color="warn">(2)</button>
-            <button (click)="response(3)" mat-flat-button color="accent">(3)</button>
-            <button (click)="response(4)" mat-flat-button color="accent">(4)</button>
-            <button (click)="response(5)" mat-flat-button color="primary">(5)</button>
+            <button (click)="response(0)" mat-stroked-button style="color: #f4a261;"
+                color="primary"><b>知らない</b></button>
+            <button (click)="response(3)" mat-stroked-button style="color: #e76f51"><b>難しい</b></button>
+            <button (click)="response(4)" mat-stroked-button style="color: #264653"><b>知ってる</b></button>
+            <button (click)="response(5)" mat-stroked-button style="color: #2a9d8f"><b>簡単</b></button>
         </div>
     </div>
 </div>

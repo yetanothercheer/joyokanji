@@ -1,6 +1,7 @@
 .card {
+    font-family : 'ヒラギノ角ゴ ProN' , 'Hiragino Kaku Gothic ProN' , '游ゴシック' , '游ゴシック体' , YuGothic , 'Yu Gothic' , 'メイリオ' , Meiryo , 'ＭＳ ゴシック' , 'MS Gothic' , HiraKakuProN-W3 , 'TakaoExゴシック' , TakaoExGothic , 'MotoyaLCedar' , 'Droid Sans Japanese' , sans-serif;
     min-height: 300px;
-    margin: 1em 0.5em;
+    min-width: 800px;
     box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;;
     display: flex;
 }
@@ -27,7 +28,8 @@ button {
 }
 
 .content {
-    padding: 1em;
+    padding: 2em;
+    margin: 0em 2em;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -37,20 +39,22 @@ button {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    gap: 1.2em;
     align-items: center;
     padding-top: 1em;
 }
 
 .arrow-right {
+    transition: border-left 0.15s;
     width: 0px;
     height: 0px;
     border-bottom: 80px solid transparent;
-    border-left: 120px solid red;
+    border-left: 120px solid #e76f51;
     z-index: -1;
 }
 
 .arrow-right[change=true] {
-    border-left: 120px solid green;
+    border-left: 120px solid #2a9d8f;
 }
 
 .hang {
@@ -59,4 +63,8 @@ button {
 
 p.hang {
     padding: 1em;
+}
+
+button, a {
+    font-size: 1.2em;
 }
