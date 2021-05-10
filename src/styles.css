@@ -2,3 +2,25 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  --red: #e76f51;
+  --green: #2a9d8f;
+  --blue: #264653;
+  --orange: #f4a261;
+}
+
+body[theme = "light"] {
+  --primary: #000;
+  --surface: #fff;
+}
+
+body[theme = "dark"] {
+  --primary: #fff;
+  --surface: #000
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--primary);
+}

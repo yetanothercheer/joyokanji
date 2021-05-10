@@ -5,7 +5,7 @@
 <div *ngIf="loaded && !started" class="card">
     <div class="center">
         <p style="font-size: 3em; color: #f4a261"><b>おはよー💨</b></p>
-        <button (click)="start()" mat-flat-button style="font-size: 2em; color: #2a9d8f">
+        <button (click)="start()" mat-flat-button style="font-size: 2em; color: #2a9d8f; background-color: transparent">
             💪<b><u>今日も<span style="color: #f4a261">常用漢字</span>頑張りましょう</u></b>👊
         </button>
     </div>
@@ -14,7 +14,7 @@
 <div *ngIf="loaded && started && current == null" class="card">
     <div *ngIf="hasMore" class="center">
         <p style="font-size: 2em;"><b>これで終わりました！🥳</b></p>
-        <button (click)="more()" mat-flat-button style="color: #2a9d8f"><b><u>もう二十個ください。</u></b></button>
+        <button (click)="more()" mat-flat-button style="color: #2a9d8f; background-color: transparent;"><b><u>もう二十個ください。</u></b></button>
     </div>
     <div *ngIf="!hasMore" class="center">
         <p style="font-size: 2em;"><b>🍻おめでとう！卒業しました！🥳</b></p>
@@ -29,19 +29,19 @@
     </p>
     <div [attr.change]="!front" class="hang arrow-right"></div>
     <a *ngIf="!front" disableRipple mat-flat-button class="hang" matTooltip="知らない漢字が再び表示されます。他のオプシンの場合は数日後に表示されます。"
-        style="right: 0; margin: 0.5em; color:#2a9d8f">
+        style="right: 0; margin: 0.5em; color:#2a9d8f; background-color: transparent;">
         <mat-icon>help</mat-icon>
     </a>
 
 
     <div *ngIf="front" class="content">
         <div class="main">
-            <p style="font-size: 4em; color: gray">{{current.onyomi}}</p>
+            <p style="font-size: 4em; opacity: 0.7">{{current.onyomi}}</p>
             <mat-divider></mat-divider>
             <p style="font-size: 2em; line-height: 1.5em;" innerHTML={{current.imi}}></p>
         </div>
         <div class="btns">
-            <button (click)="reveal()" mat-flat-button><b><u>あらわす</u></b></button>
+            <button (click)="reveal()" style="background-color: transparent;" mat-flat-button><b><u>あらわす</u></b></button>
         </div>
     </div>
 

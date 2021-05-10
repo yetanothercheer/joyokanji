@@ -8,5 +8,6 @@
 </mat-tab-group> -->
 
 <div class="app">
+  <mat-slide-toggle [checked]="theme=='dark'" (change)="toogleTheme()" style="position: absolute; left: 0; top: 0; margin: 2em; font-size: 2em;"></mat-slide-toggle>
   <app-card></app-card>
 </div>

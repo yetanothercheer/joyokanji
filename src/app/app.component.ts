@@ -15,4 +15,19 @@ export class AppComponent {
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }
+
+  theme = "light"
+
+  ngOnInit() {
+    this.theme = localStorage.getItem("theme") || "light"
+    document.body.setAttribute("theme", this.theme)
+  }
+
+  toogleTheme() {
+    let current = document.body.getAttribute("theme")
+    let target = current == "light" ? "dark" : "light"
+    document.body.setAttribute("theme", target)
+    localStorage.setItem("theme", target)
+    this.theme = target
+  }
 }
