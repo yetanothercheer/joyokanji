@@ -77,6 +77,37 @@ export class AnkiService {
   selected: any
   round: any = []
 
+  getRemainsCount() {
+    let newcomers = this.learning.filter((e: any) => e.repetitions == 0)
+
+    // Review time comes
+    let current = (new Date()).getTime()
+    let reviews = this.learning.filter((e: any) => {
+      if (e.lastTime) {
+        let diff = current - e.lastTime
+        let daysPast = diff / (1000 * 60 * 60 * 24)
+        return daysPast >= e.interval
+      }
+      return false
+    })
+
+    return newcomers.length + reviews.length
+  }
+
+  getPassedCount(): number {
+    let todayPassed = localStorage.getItem(new Date().toDateString())
+    return todayPassed ? parseInt(todayPassed) : 0
+  }
+
+  setPassedCount(count: number) {
+    localStorage.setItem(new Date().toDateString(), count.toString())
+  }
+
+  incrementPassedCount() {
+    let count = this.getPassedCount();
+    this.setPassedCount(count + 1)
+  }
+
   select() {
     if (this.round.length == 0) {
       let newcomers = this.learning.filter((e: any) => e.repetitions == 0)
@@ -98,10 +129,27 @@ export class AnkiService {
       }
     }
     this.selected = this.round.shift()
+
+    // small format adjustment
+    if (this.selected) {
+      let imi = this.selected.imi as string;
+      let i = 0;
+      while (i < imi.length) {
+        let char = imi.charCodeAt(i)
+        if (char >= 0x2460 && char <= 0x2469 && i != 0) {
+          imi = imi.slice(0, i) + "<br/>" + imi.slice(i, imi.length)
+          i += "<br/>".length
+        }
+        i++
+      }
+      this.selected.imi = imi
+    }
+
     return this.selected
   }
 
   response(quality: number) {
+    this.incrementPassedCount()
     if (quality < 3) {
       this.selected.repetitions = 0
       this.selected.interval = 1
