@@ -38,7 +38,7 @@ export class CardComponent implements OnInit {
     this.started = true
     this.anki.init()
     this.current = this.anki.select()
-    this.progress = 100 * this.anki.getPassedCount() / (this.anki.getRemainsCount() + this.anki.getPassedCount())
+    this.updateProgress()
   }
 
   hasMore = false
@@ -46,7 +46,7 @@ export class CardComponent implements OnInit {
   next() {
     this.current = this.anki.select()
     this.hasMore = this.anki.hasMore()
-    this.progress = 100 * this.anki.getPassedCount() / (this.anki.getRemainsCount() + this.anki.getPassedCount())
+    this.updateProgress()
   }
 
   front = true
@@ -56,6 +56,16 @@ export class CardComponent implements OnInit {
   }
 
   progress = 0
+  progressInfo = ""
+
+  updateProgress() {
+    let [learning, remain] = this.anki.getOverallCount()
+    let passedToday = this.anki.getPassedCount()
+    let remainsToday = this.anki.getRemainsCount()
+    this.progress = 100 * passedToday / (passedToday + remainsToday)
+    this.progressInfo = `今日${passedToday}/${passedToday + remainsToday} 全部${learning}/${learning + remain}`
+  }
+
   response(level: number) {
     this.anki.response(level)
     this.next()

@@ -90,6 +90,10 @@ export class AnkiService {
   selected: any
   round: any = []
 
+  getOverallCount() {
+    return [this.learning.length, this.data.length]
+  }
+
   getRemainsCount() {
     let newcomers = this.learning.filter((e: any) => e.repetitions == 0)
 

@@ -61,5 +61,5 @@
         </div>
     </div>
 
-    <mat-progress-bar class="hang" style="bottom: 0" mode="determinate" [color]="front ? 'primary' : 'accent'" [value]="progress"></mat-progress-bar>
+    <mat-progress-bar [matTooltip]="progressInfo" class="hang" style="bottom: 0; cursor: pointer;" mode="determinate" [color]="front ? 'primary' : 'accent'" [value]="progress"></mat-progress-bar>
 </div>
