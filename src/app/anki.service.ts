@@ -58,19 +58,32 @@ export class AnkiService {
     return this.data != null
   }
 
-  learning = []
+  learning: any[] = []
 
   hasMore() {
     return this.data.length > 0
   }
 
   add(count: number) {
-    this.learning = this.data.splice(0, count)
-    this.learning.forEach((e: any) => {
+    let newLearning = this.data.splice(0, count)
+    newLearning.forEach((e: any) => {
       e.interval = 0
       e.ef = 2.5
       e.repetitions = 0
+
+      let imi = e.imi as string;
+      let i = 0;
+      while (i < imi.length) {
+        let char = imi.charCodeAt(i)
+        if (char >= 0x2460 && char <= 0x2469 && i != 0) {
+          imi = imi.slice(0, i) + "<br/>" + imi.slice(i, imi.length)
+          i += "<br/>".length
+        }
+        i++
+      }
+      e.imi = imi
     })
+    this.learning = [...newLearning, ...this.learning]
     this.save()
   }
 
@@ -116,7 +129,7 @@ export class AnkiService {
         this.round = newcomers;
       } else {
         // Review time comes
-        let current = (new Date()).getTime()
+        let current = (new Date(new Date().toDateString())).getTime()
         let reviews = this.learning.filter((e: any) => {
           if (e.lastTime) {
             let diff = current - e.lastTime
@@ -129,22 +142,6 @@ export class AnkiService {
       }
     }
     this.selected = this.round.shift()
-
-    // small format adjustment
-    if (this.selected) {
-      let imi = this.selected.imi as string;
-      let i = 0;
-      while (i < imi.length) {
-        let char = imi.charCodeAt(i)
-        if (char >= 0x2460 && char <= 0x2469 && i != 0) {
-          imi = imi.slice(0, i) + "<br/>" + imi.slice(i, imi.length)
-          i += "<br/>".length
-        }
-        i++
-      }
-      this.selected.imi = imi
-    }
-
     return this.selected
   }
 
@@ -167,7 +164,7 @@ export class AnkiService {
       }
       this.selected.repetitions++
     }
-    this.selected.lastTime = (new Date()).getTime()
+    this.selected.lastTime = (new Date(new Date().toDateString())).getTime()
     this.save()
   }
 
