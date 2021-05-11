@@ -47,7 +47,7 @@
 
     <div *ngIf="!front" class="content">
         <div class="main">
-            <p style="font-size: 4em">{{current.kanji}}</p>
+            <p [matBadge]="current.tags" matBadgeOverlap="false" matBadgeColor="warn" style="font-size: 4em">{{current.kanji}}</p>
         </div>
         <div class="btns">
             <button (click)="response(0)" mat-stroked-button style="color: #f4a261"><b>知らない<span

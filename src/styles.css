@@ -24,3 +24,11 @@ body {
   background-color: var(--surface);
   color: var(--primary);
 }
+
+.mat-badge-content {
+  right: -37px !important;
+  top: -15px !important;
+  width: 33px !important;
+  height: 33px !important;
+  line-height: 33px !important;
+}

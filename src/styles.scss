@@ -3,13 +3,13 @@
 
 $dark-primary: mat-palette($mat-light-blue);
 $dark-accent:  mat-palette($mat-light-blue);
-$dark-warn:    mat-palette($mat-deep-orange);
+$dark-warn:    mat-palette($mat-light-blue);
 $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 $candy-app-primary: mat-palette($mat-orange);
 $candy-app-accent:  mat-palette($mat-green);
 // The warn palette is optional (defaults to red).
-$candy-app-warn:    mat-palette($mat-red);
+$candy-app-warn:    mat-palette($mat-light-blue);
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as `color` or `typography`.
 $candy-app-theme: mat-light-theme((
