@@ -17,12 +17,20 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
+import { ListComponent } from './list/list.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     SettingComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,13 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatTooltipModule,
     MatIconModule,
     MatSlideToggleModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatListModule,
+    ScrollingModule,
+    MatRippleModule
   ],
   providers: [AnkiService],
   bootstrap: [AppComponent]

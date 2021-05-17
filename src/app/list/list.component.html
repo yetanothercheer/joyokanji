@@ -1,0 +1,30 @@
+<div class="card">
+    <p style="font-size: 2em"><b>漢字リスト</b>
+        <span style="color: gray; font-size: 0.7em;">#{{data.length}}</span></p>
+    <section class="filter">
+        <mat-checkbox class="checkbox" [checked]="options.b" (change)="update({b: !options.b})">学習中</mat-checkbox>
+        <mat-checkbox class="checkbox" [checked]="options.a" (change)="update({a: !options.a})">学習終了</mat-checkbox>
+        <mat-checkbox class="checkbox" [checked]="options.c" (change)="update({c: !options.c})">未学習</mat-checkbox>
+        <div class="empty"></div>
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>並び替え</mat-label>
+            <mat-select>
+                <mat-option value="option">加入日付</mat-option>
+                <mat-option value="option">錯誤日付</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+    </section>
+
+    <cdk-virtual-scroll-viewport itemSize="50" class="list">
+        <div *cdkVirtualFor="let item of data; index as i" class="item" matRipple>
+            <span style="font-size: 0.5em; color: gray; padding-right: 1em">{{i}}</span>
+            {{item.kanji}}
+            <div class="empty"></div>
+            <span>
+            <span style="color: gray; font-size: 0.7em; padding-left: 0.5em">{{item.onyomi}}</span>
+            <span style="color: gray; font-size: 0.7em; padding-left: 0.5em">{{item.kunyomi}}</span>
+            </span>
+        </div>
+    </cdk-virtual-scroll-viewport>
+
+</div>

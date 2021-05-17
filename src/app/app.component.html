@@ -8,6 +8,16 @@
 </mat-tab-group> -->
 
 <div class="app">
-  <mat-slide-toggle [checked]="theme=='dark'" (change)="toogleTheme()" style="position: absolute; left: 0; top: 0; margin: 2em; font-size: 2em;"></mat-slide-toggle>
-  <app-card></app-card>
+  <mat-slide-toggle [checked]="theme=='dark'" (change)="toogleTheme()" style="position: absolute; left: 0; top: 0; margin: 0.7em 1.4em; font-size: 2em;"></mat-slide-toggle>
+  <mat-tab-group (selectedIndexChange)="selectedIndexChange($event)" class="tabs">
+    <mat-tab label="カード"></mat-tab>
+    <mat-tab label="リスト"></mat-tab>
+  </mat-tab-group>
+
+  <app-card *ngIf="selectedIndex == 0">
+
+  </app-card>
+  <app-list *ngIf="selectedIndex == 1">
+
+  </app-list>
 </div>

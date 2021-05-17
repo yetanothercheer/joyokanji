@@ -23,6 +23,12 @@ export class AppComponent {
     document.body.setAttribute("theme", this.theme)
   }
 
+  selectedIndex = 0
+
+  selectedIndexChange(i: number) {
+    this.selectedIndex = i
+  }
+
   toogleTheme() {
     let current = document.body.getAttribute("theme")
     let target = current == "light" ? "dark" : "light"
