@@ -13,7 +13,9 @@ export async function readAnkiFile(file: ArrayBuffer) {
     let files = Zip.readZip(Buffer.from(file))
 
     const SQL = await initSqlJs({
-        locateFile: file => `https://sql.js.org/dist/${file}`
+        // new SQL.Database() will stuck if wasm is fetched from this link
+        // locateFile: file => `https://sql.js.org/dist/${file}`
+        locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`
     });
 
     let j = pako.inflateRaw(files['media'].data, { to: 'string' })
