@@ -38,7 +38,6 @@ export class ListComponent implements OnInit {
     if (this.options.c) {
       this.data = [...this.data, ...this.anki.data]
     }
-    console.log(this.data)
   }
 
   ngOnInit(): void {
