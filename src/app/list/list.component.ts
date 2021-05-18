@@ -9,10 +9,11 @@ import { AnkiService } from '../anki.service';
 export class ListComponent implements OnInit {
 
   constructor(private anki: AnkiService) {
+    // only show today's words at first
     this.update({
-      a: true,
+      a: false,
       b: true,
-      c: true,
+      c: false,
       order: 0
     })
   }
