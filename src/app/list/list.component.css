@@ -43,3 +43,11 @@ p {
 
 .item:hover {
 }
+
+.hint {
+    font-size: 0.5em;
+    opacity: 0.7;
+    font-weight: 900;
+    margin-top: -0.3em;
+    margin-left: 0.2em;
+}

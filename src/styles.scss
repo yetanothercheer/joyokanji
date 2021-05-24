@@ -20,10 +20,17 @@ $candy-app-theme: mat-light-theme((
   )
 ));
 
+
 body[theme = "dark"] {
   @include angular-material-theme($dark-theme);
+  .primary-color {
+    color: mat-color($dark-primary) !important;
+  }
 }
 
 body[theme = "light"] {
   @include angular-material-theme($candy-app-theme);
+  .primary-color {
+    color: mat-color($candy-app-accent) !important;
+  }
 }

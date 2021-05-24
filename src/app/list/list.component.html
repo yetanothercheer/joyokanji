@@ -19,6 +19,12 @@
         <div *cdkVirtualFor="let item of data; index as i" class="item" matRipple>
             <span style="font-size: 0.5em; color: gray; padding-right: 1em">{{i}}</span>
             {{item.kanji}}
+            <div class="hint primary-color" *ngIf="item.real_interval == 0">
+                今日！
+            </div>
+            <div class="hint" *ngIf="item.real_interval != null && item.real_interval > 0">
+                {{item.real_interval}}日後
+            </div>
             <div class="empty"></div>
             <span>
             <span style="color: gray; font-size: 0.7em; padding-left: 0.5em">{{item.onyomi}}</span>

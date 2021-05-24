@@ -30,11 +30,27 @@ export class ListComponent implements OnInit {
   async update(options = {}) {
     this.options = { ...this.options, ...options }
     this.data = []
-    if (this.options.a) {
-      this.data = [...this.data, ...this.anki.learning.filter(i => i.ef == 1.3)]
-    }
     if (this.options.b) {
       this.data = [...this.data, ...this.anki.learning.filter(i => i.ef > 1.3)]
+      let current = (new Date(new Date().toDateString())).getTime()
+      this.data.forEach((e: any) => {
+        if (e.lastTime && e.repetitions > 0) {
+          let diff = current - e.lastTime
+          let daysPast = diff / (1000 * 60 * 60 * 24)
+          let afterDays = e.interval - daysPast
+          if (afterDays > 0) {
+            e.real_interval = Math.ceil(afterDays)
+          } else {
+            e.real_interval = 0
+          }
+        } else {
+          e.real_interval = 0
+        }
+      })
+      this.data = this.data.sort((a: any, b: any) => a.real_interval - b.real_interval)
+    }
+    if (this.options.a) {
+      this.data = [...this.data, ...this.anki.learning.filter(i => i.ef == 1.3)]
     }
     if (this.options.c) {
       this.data = [...this.data, ...this.anki.data]
