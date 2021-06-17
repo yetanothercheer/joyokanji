@@ -1,11 +1,25 @@
 .card {
     font-family : 'ヒラギノ角ゴ ProN' , 'Hiragino Kaku Gothic ProN' , '游ゴシック' , '游ゴシック体' , YuGothic , 'Yu Gothic' , 'メイリオ' , Meiryo , 'ＭＳ ゴシック' , 'MS Gothic' , HiraKakuProN-W3 , 'TakaoExゴシック' , TakaoExGothic , 'MotoyaLCedar' , 'Droid Sans Japanese' , sans-serif;
-    min-height: 300px;
-    min-width: 800px;
-    box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;;
     display: flex;
+    min-width: 100vw;
+    min-height: 50vh;
     position: relative;
 }
+
+@media only screen and (min-width: 768px) {
+    .card {
+        min-height: 300px;
+        min-width: 800px;
+        box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main {
+        font-size: 0.6rem;
+    }
+}
+
 
 .center {
     flex-grow: 1;
@@ -17,6 +31,7 @@
 
 button {
     margin: 1em;
+    touch-action: manipulation;
 }
 
 * {
@@ -32,6 +47,16 @@ button {
 .btns {
     display: flex;
     justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .btns {
+        flex-direction: column;
+    }
+
+    button {
+        margin: 0.3em;
+    }
 }
 
 .content {
