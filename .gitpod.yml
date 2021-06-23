@@ -1,0 +1,12 @@
+tasks:
+  - init: echo 'Configuring...'
+    command: >
+      echo export PATH="\$PATH:\$(yarn global bin)" >> ~/.bashrc;
+      export PATH="$PATH:$(yarn global bin)";
+      yarn install;
+      yarn global add nx;
+      nx serve --disable-host-check --host 0.0.0.0;
+
+ports:
+  - port: 4200
+    onOpen: open-browser

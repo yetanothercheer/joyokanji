@@ -1,0 +1,22 @@
+<!-- <ul>
+  <li class="text" *ngFor="let item of data | async">
+    {{item.name}}
+  </li>
+</ul> -->
+
+<div *ngIf="current$ | async as current; else empty">
+  <p>{{current.content.index}}: {{current.content.id}}</p>
+  <button mat-button color="primary" (click)="action(current, 1)">1</button>
+  <button mat-button color="primary" (click)="action(current, 2)">2</button>
+  <button mat-button color="primary" (click)="action(current, 3)">3</button>
+  <button mat-button color="primary" (click)="action(current, 4)">4</button>
+  <button mat-button color="primary" (click)="action(current, 5)">5</button>
+</div>
+
+<ng-template #empty>
+  Empty, You may
+  <button mat-button color="primary" (click)="addWords()">
+    click to add
+  </button>
+  .
+</ng-template>

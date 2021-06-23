@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "joyokanji-c02b6": {
+      "hosting": {
+        "joyokanji": [
+          "joyokanji-c02b6"
+        ]
+      }
+    }
+  }
+}
