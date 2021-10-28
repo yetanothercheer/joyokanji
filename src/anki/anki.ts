@@ -14,8 +14,13 @@ export async function readAnkiFile(file: ArrayBuffer) {
 
     const SQL = await initSqlJs({
         // new SQL.Database() will stuck if wasm is fetched from this link
-        // locateFile: file => `https://sql.js.org/dist/${file}`
-        locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`
+        // Somehow, this works, former workaround doesn't work.
+        locateFile: file => `https://sql.js.org/dist/${file}`
+        // locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`,
+        // locateFile: file => {
+            // console.log(`https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`)
+            // return `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${file}`
+        // }
     });
 
     let j = pako.inflateRaw(files['media'].data, { to: 'string' })
