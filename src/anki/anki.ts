@@ -2,7 +2,9 @@ import { Zip } from './zip'
 
 // Angular " Can't resolve 'fs' in ~ " の対処法
 // https://qiita.com/SideSpoilenm/items/d0975324c08bc20dedf7
-import initSqlJs from 'sql.js'
+import _initSqlJs from 'sql.js'
+
+const initSqlJs = window.initSqlJs;
 
 declare module 'pako' { }
 import * as pako from 'pako'
